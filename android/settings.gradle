@@ -1,0 +1,8 @@
+rootProject.name = 'testapp'
+include ':rn-splash-screen'
+project(':rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/rn-splash-screen/android')
+
+include ':app'
+
+include ':RNGL'
+project(':RNGL').projectDir = file('../node_modules/gl-react-native/android')
