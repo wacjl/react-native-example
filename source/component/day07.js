@@ -61,7 +61,7 @@ import SegmentedControlTab  from 'react-native-segmented-control-tab'
  			},
  			onPanResponderGrant:()=>{},
  			onPanResponderMove:(evt,gs)=>{
- 			if(this.a && this.a.index!==0 )return;
+ 			if(this.a.index!==0 )return;
  				let top=this.previousTop+gs.dy;
  				this.userStyle.style.top=top
  				this.scale=1+top/162.5;
@@ -102,12 +102,12 @@ import SegmentedControlTab  from 'react-native-segmented-control-tab'
 	        onPanResponderRelease: (evt, gestureState) => {
 	        // 用户放开了所有的触摸点，且此时视图已经成为了响应者。
 	        // 一般来说这意味着一个手势操作已经成功完成。
-	       // if(this.a.index!==0 )return;
+	        if(this.a.index!==0 )return;
 	        this.endMove(evt, gestureState)
 	       },
 	        onPanResponderTerminate: (evt, gestureState) => {
 	        // 另一个组件已经成为了新的响应者，所以当前手势将被取消。
-	        //if(this.a.index!==0 )return;
+	        if(this.a.index!==0 )return;
 	         this.endMove(evt, gestureState)
 	       }
  			
@@ -155,7 +155,7 @@ import SegmentedControlTab  from 'react-native-segmented-control-tab'
 					    stretch
 					    onTabPress={index => this.setState({ index })}
 						/>
-						<FlatList keyExtractor={(item,index)=>index}
+						<FlatList keyExtractor={(item,index)=>index} onViewableItemsChanged={(info)=>this.onViewableItemsChanged(info)}
 						  data={[{key: './img/tumblr.png'},{key: './img/tumblr.png'}, {key: './img/tumblr.png'}]}
 						  renderItem={({item,index}) =>index===0?<Text></Text>:  <Image resizeMethod ="resize" style={{width:Util.size.width, height:Util.size.width*1.76,resizeMode :'contain'}} source={require('./img/tumblr.png')}></Image>}
 						/>
